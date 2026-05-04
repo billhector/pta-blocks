@@ -1,0 +1,112 @@
+/*
+ * pta-blocks supplementary CSS
+ *
+ * Use this file ONLY for selectors theme.json cannot reach. theme.json is the
+ * design source of truth (Plan D). Each rule below should explain why it can't
+ * live in theme.json.
+ */
+
+/* ---------- color-mix derived light/dark variants ---------------------------
+   theme.json v3 supports static palette only; color-mix derivations live here. */
+:root {
+    --color-primary-light:   color-mix(in oklab, var(--wp--preset--color--primary) 40%, white);
+    --color-primary-dark:    color-mix(in oklab, var(--wp--preset--color--primary) 60%, black);
+    --color-secondary-light: color-mix(in oklab, var(--wp--preset--color--secondary) 40%, white);
+    --color-secondary-dark:  color-mix(in oklab, var(--wp--preset--color--secondary) 60%, black);
+    --color-accent-light:    color-mix(in oklab, var(--wp--preset--color--accent) 40%, white);
+    --color-accent-dark:     color-mix(in oklab, var(--wp--preset--color--accent) 60%, black);
+}
+
+/* ---------- focus-visible polish ---------------------------------------------
+   theme.json :focus pseudo support is uneven across blocks; centralize here. */
+a:focus-visible,
+button:focus-visible,
+.wp-block-button__link:focus-visible,
+.wp-element-button:focus-visible {
+    outline: 2px solid var(--wp--preset--color--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- pta-core/buy-button ---------------------------------------------
+   Dynamic block markup is a bare <button>; needs themeable styling. */
+.pta-buy-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--wp--preset--color--accent);
+    color: var(--wp--preset--color--white);
+    font-family: var(--wp--preset--font-family--ui);
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background-color 0.15s ease;
+}
+.pta-buy-button:hover { background: var(--wp--preset--color--primary); }
+.pta-buy-button[disabled] { opacity: 0.6; cursor: wait; }
+
+/* ---------- pta-core/county-contacts ----------------------------------------
+   Two contact-item cards; needs grid + spacing not expressible in block.json. */
+.wp-block-pta-core-county-contacts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+.wp-block-pta-core-county-contacts .contact-item {
+    background: var(--wp--preset--color--white);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.county-contacts-error {
+    color: var(--wp--preset--color--secondary);
+    font-style: italic;
+}
+
+/* ---------- pta-core/related-guide-posts ------------------------------------
+   3-column grid for related cards. */
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.related-post-item {
+    background: var(--wp--preset--color--white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+.related-post-image img { width: 100%; height: auto; border-radius: 4px; }
+.related-post-title { font-weight: 700; font-size: 1.05rem; margin: 0.5rem 0; }
+.related-post-link { margin-top: auto; color: var(--wp--preset--color--link); }
+
+/* ---------- pta-core/municipality-dropdown ----------------------------------
+   Dropdown + dynamic info pane. */
+.municipality-selector-hero {
+    background: var(--wp--preset--color--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid color-mix(in oklab, var(--wp--preset--color--secondary) 20%, white);
+}
+.municipality-selector-hero select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--wp--preset--color--secondary);
+    border-radius: 4px;
+    background: var(--wp--preset--color--white);
+}
+.municipality-results { margin-top: 1rem; }
+
+/* ---------- print --------------------------------------------------------- */
+@media print {
+    .pta-buy-button,
+    .wp-block-navigation,
+    .wp-block-template-part[data-type="footer"] { display: none; }
+}

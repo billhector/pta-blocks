@@ -1,0 +1,24 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|48","bottom":"var:preset|spacing|48"}}}} -->
+<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--48);padding-bottom:var(--wp--preset--spacing--48)">
+
+    <!-- wp:post-title {"level":1} /-->
+    <!-- wp:template-part {"slug":"post-meta"} /-->
+    <!-- wp:post-featured-image {"align":"wide","style":{"border":{"radius":"8px"}}} /-->
+    <!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+
+    <!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|64","bottom":"var:preset|spacing|32"}}}} -->
+    <hr class="wp-block-separator has-alpha-channel-opacity" style="margin-top:var(--wp--preset--spacing--64);margin-bottom:var(--wp--preset--spacing--32)" />
+    <!-- /wp:separator -->
+
+    <!-- wp:heading {"level":2,"fontSize":"h3"} -->
+    <h2 class="wp-block-heading has-h-3-font-size">Related Articles</h2>
+    <!-- /wp:heading -->
+
+    <!-- wp:pta-core/related-guide-posts {"limit":3,"showExcerpt":true} /-->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
